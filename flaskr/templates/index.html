@@ -1,5 +1,14 @@
-{% extends "layout.html" %}
-{% block body %}
-<h1>Overview</h1>
-<p>Do you want to <a href="{{ url_for('login') }}">log in?</a>
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Home{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if g.user %}
+        <h3>Hello {{ g.user['username'] }}</h3>
+
+    {% else %}
+        <p>not logged in</p>
+    {% endif%}
 {% endblock %}
